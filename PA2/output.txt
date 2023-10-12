@@ -1,325 +1,324 @@
-(base) shadi97kh@Shadis-Air Computer-Vision % /Users/shadi97kh/anaconda3/bin/python /Users/shadi97kh/Documents/C
-omputer-Vision/PA2/testCNN.py
+ shadi97kh@Shadis-Air Computer-Vision % /Users/shadi97kh/anaconda3/bin/python /Users/shadi97kh/Documents/Computer-Vision/PA2/testCNN.py
 Torch device selected:  cpu
 Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
-100%|███████████████████████████████████████████████████████████| 9912422/9912422 [00:00<00:00, 34590015.49it/s]
+100%|███████████████████████████████████████████████████████████| 9912422/9912422 [00:00<00:00, 36109523.76it/s]
 Extracting ./data/MNIST/raw/train-images-idx3-ubyte.gz to ./data/MNIST/raw
 
 Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ./data/MNIST/raw/train-labels-idx1-ubyte.gz
-100%|██████████████████████████████████████████████████████████████| 28881/28881 [00:00<00:00, 132388736.42it/s]
+100%|██████████████████████████████████████████████████████████████| 28881/28881 [00:00<00:00, 168947969.07it/s]
 Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
 
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
-100%|███████████████████████████████████████████████████████████| 1648877/1648877 [00:00<00:00, 17504198.69it/s]
+100%|███████████████████████████████████████████████████████████| 1648877/1648877 [00:00<00:00, 16851094.50it/s]
 Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
 
 Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
-100%|█████████████████████████████████████████████████████████████████| 4542/4542 [00:00<00:00, 20934647.00it/s]
+100%|█████████████████████████████████████████████████████████████████| 4542/4542 [00:00<00:00, 28908237.89it/s]
 Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
 
-Train set: Average loss: 0.2648, Accuracy: 55352/60000 (92%)
+Train set: Average loss: 0.2619, Accuracy: 55444/60000 (92%)
 
 
-Test set: Average loss: 0.1463, Accuracy: 9555/10000 (96%)
+Test set: Average loss: 0.1450, Accuracy: 9583/10000 (96%)
 
-Train set: Average loss: 0.1201, Accuracy: 57905/60000 (97%)
+Train set: Average loss: 0.1204, Accuracy: 57886/60000 (96%)
 
 
-Test set: Average loss: 0.1130, Accuracy: 9659/10000 (97%)
+Test set: Average loss: 0.1115, Accuracy: 9663/10000 (97%)
 
-Train set: Average loss: 0.0857, Accuracy: 58515/60000 (98%)
+Train set: Average loss: 0.0858, Accuracy: 58506/60000 (98%)
 
 
-Test set: Average loss: 0.0926, Accuracy: 9726/10000 (97%)
+Test set: Average loss: 0.0995, Accuracy: 9684/10000 (97%)
 
-Train set: Average loss: 0.0665, Accuracy: 58870/60000 (98%)
+Train set: Average loss: 0.0660, Accuracy: 58869/60000 (98%)
 
 
-Test set: Average loss: 0.0847, Accuracy: 9722/10000 (97%)
+Test set: Average loss: 0.0862, Accuracy: 9728/10000 (97%)
 
-Train set: Average loss: 0.0519, Accuracy: 59112/60000 (99%)
+Train set: Average loss: 0.0526, Accuracy: 59097/60000 (98%)
 
 
-Test set: Average loss: 0.0803, Accuracy: 9741/10000 (97%)
+Test set: Average loss: 0.0807, Accuracy: 9740/10000 (97%)
 
-Train set: Average loss: 0.0421, Accuracy: 59327/60000 (99%)
+Train set: Average loss: 0.0425, Accuracy: 59315/60000 (99%)
 
 
-Test set: Average loss: 0.0755, Accuracy: 9755/10000 (98%)
+Test set: Average loss: 0.0785, Accuracy: 9757/10000 (98%)
 
-Train set: Average loss: 0.0336, Accuracy: 59494/60000 (99%)
+Train set: Average loss: 0.0345, Accuracy: 59473/60000 (99%)
 
 
-Test set: Average loss: 0.0755, Accuracy: 9754/10000 (98%)
+Test set: Average loss: 0.0856, Accuracy: 9732/10000 (97%)
 
-Train set: Average loss: 0.0276, Accuracy: 59609/60000 (99%)
+Train set: Average loss: 0.0281, Accuracy: 59618/60000 (99%)
 
 
-Test set: Average loss: 0.0767, Accuracy: 9753/10000 (98%)
+Test set: Average loss: 0.0795, Accuracy: 9759/10000 (98%)
 
-Train set: Average loss: 0.0222, Accuracy: 59735/60000 (100%)
+Train set: Average loss: 0.0229, Accuracy: 59710/60000 (100%)
 
 
-Test set: Average loss: 0.0705, Accuracy: 9785/10000 (98%)
+Test set: Average loss: 0.0713, Accuracy: 9785/10000 (98%)
 
-Train set: Average loss: 0.0180, Accuracy: 59822/60000 (100%)
+Train set: Average loss: 0.0189, Accuracy: 59803/60000 (100%)
 
 
-Test set: Average loss: 0.0714, Accuracy: 9779/10000 (98%)
+Test set: Average loss: 0.0721, Accuracy: 9782/10000 (98%)
 
-Train set: Average loss: 0.0147, Accuracy: 59873/60000 (100%)
+Train set: Average loss: 0.0153, Accuracy: 59862/60000 (100%)
 
 
-Test set: Average loss: 0.0717, Accuracy: 9778/10000 (98%)
+Test set: Average loss: 0.0756, Accuracy: 9767/10000 (98%)
 
-Train set: Average loss: 0.0125, Accuracy: 59898/60000 (100%)
+Train set: Average loss: 0.0128, Accuracy: 59889/60000 (100%)
 
 
-Test set: Average loss: 0.0723, Accuracy: 9775/10000 (98%)
+Test set: Average loss: 0.0698, Accuracy: 9781/10000 (98%)
 
-Train set: Average loss: 0.0104, Accuracy: 59936/60000 (100%)
+Train set: Average loss: 0.0110, Accuracy: 59920/60000 (100%)
 
 
-Test set: Average loss: 0.0721, Accuracy: 9780/10000 (98%)
+Test set: Average loss: 0.0705, Accuracy: 9788/10000 (98%)
 
-Train set: Average loss: 0.0088, Accuracy: 59951/60000 (100%)
+Train set: Average loss: 0.0092, Accuracy: 59949/60000 (100%)
 
 
-Test set: Average loss: 0.0715, Accuracy: 9778/10000 (98%)
+Test set: Average loss: 0.0717, Accuracy: 9786/10000 (98%)
 
-Train set: Average loss: 0.0076, Accuracy: 59966/60000 (100%)
+Train set: Average loss: 0.0080, Accuracy: 59968/60000 (100%)
 
 
-Test set: Average loss: 0.0691, Accuracy: 9792/10000 (98%)
+Test set: Average loss: 0.0716, Accuracy: 9792/10000 (98%)
 
-Train set: Average loss: 0.0066, Accuracy: 59980/60000 (100%)
+Train set: Average loss: 0.0069, Accuracy: 59976/60000 (100%)
 
 
-Test set: Average loss: 0.0700, Accuracy: 9792/10000 (98%)
+Test set: Average loss: 0.0707, Accuracy: 9798/10000 (98%)
 
-Train set: Average loss: 0.0058, Accuracy: 59983/60000 (100%)
+Train set: Average loss: 0.0061, Accuracy: 59977/60000 (100%)
 
 
-Test set: Average loss: 0.0701, Accuracy: 9800/10000 (98%)
+Test set: Average loss: 0.0719, Accuracy: 9797/10000 (98%)
 
-Train set: Average loss: 0.0052, Accuracy: 59989/60000 (100%)
+Train set: Average loss: 0.0054, Accuracy: 59989/60000 (100%)
 
 
-Test set: Average loss: 0.0714, Accuracy: 9788/10000 (98%)
+Test set: Average loss: 0.0704, Accuracy: 9798/10000 (98%)
 
-Train set: Average loss: 0.0047, Accuracy: 59991/60000 (100%)
+Train set: Average loss: 0.0049, Accuracy: 59992/60000 (100%)
 
 
-Test set: Average loss: 0.0712, Accuracy: 9790/10000 (98%)
+Test set: Average loss: 0.0721, Accuracy: 9788/10000 (98%)
 
-Train set: Average loss: 0.0043, Accuracy: 59993/60000 (100%)
+Train set: Average loss: 0.0045, Accuracy: 59993/60000 (100%)
 
 
-Test set: Average loss: 0.0719, Accuracy: 9789/10000 (98%)
+Test set: Average loss: 0.0730, Accuracy: 9798/10000 (98%)
 
-Train set: Average loss: 0.0039, Accuracy: 59995/60000 (100%)
+Train set: Average loss: 0.0041, Accuracy: 59997/60000 (100%)
 
 
-Test set: Average loss: 0.0720, Accuracy: 9794/10000 (98%)
+Test set: Average loss: 0.0730, Accuracy: 9788/10000 (98%)
 
-Train set: Average loss: 0.0036, Accuracy: 59997/60000 (100%)
+Train set: Average loss: 0.0038, Accuracy: 59996/60000 (100%)
 
 
-Test set: Average loss: 0.0724, Accuracy: 9787/10000 (98%)
+Test set: Average loss: 0.0731, Accuracy: 9798/10000 (98%)
 
-Train set: Average loss: 0.0034, Accuracy: 59996/60000 (100%)
+Train set: Average loss: 0.0035, Accuracy: 59997/60000 (100%)
 
 
-Test set: Average loss: 0.0729, Accuracy: 9784/10000 (98%)
+Test set: Average loss: 0.0735, Accuracy: 9794/10000 (98%)
 
-Train set: Average loss: 0.0031, Accuracy: 59997/60000 (100%)
+Train set: Average loss: 0.0033, Accuracy: 59997/60000 (100%)
 
 
-Test set: Average loss: 0.0734, Accuracy: 9787/10000 (98%)
+Test set: Average loss: 0.0721, Accuracy: 9805/10000 (98%)
 
-Train set: Average loss: 0.0029, Accuracy: 59997/60000 (100%)
+Train set: Average loss: 0.0031, Accuracy: 59998/60000 (100%)
 
 
-Test set: Average loss: 0.0744, Accuracy: 9785/10000 (98%)
+Test set: Average loss: 0.0731, Accuracy: 9803/10000 (98%)
 
-Train set: Average loss: 0.0028, Accuracy: 59996/60000 (100%)
+Train set: Average loss: 0.0029, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0733, Accuracy: 9787/10000 (98%)
+Test set: Average loss: 0.0735, Accuracy: 9799/10000 (98%)
 
-Train set: Average loss: 0.0026, Accuracy: 59997/60000 (100%)
+Train set: Average loss: 0.0027, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0739, Accuracy: 9785/10000 (98%)
+Test set: Average loss: 0.0736, Accuracy: 9800/10000 (98%)
 
-Train set: Average loss: 0.0025, Accuracy: 59997/60000 (100%)
+Train set: Average loss: 0.0026, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0740, Accuracy: 9786/10000 (98%)
+Test set: Average loss: 0.0740, Accuracy: 9796/10000 (98%)
 
-Train set: Average loss: 0.0023, Accuracy: 59998/60000 (100%)
+Train set: Average loss: 0.0024, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0737, Accuracy: 9790/10000 (98%)
+Test set: Average loss: 0.0745, Accuracy: 9798/10000 (98%)
 
-Train set: Average loss: 0.0022, Accuracy: 59998/60000 (100%)
+Train set: Average loss: 0.0023, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0749, Accuracy: 9786/10000 (98%)
+Test set: Average loss: 0.0748, Accuracy: 9793/10000 (98%)
+
+Train set: Average loss: 0.0022, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0748, Accuracy: 9796/10000 (98%)
 
 Train set: Average loss: 0.0021, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0742, Accuracy: 9787/10000 (98%)
+Test set: Average loss: 0.0743, Accuracy: 9802/10000 (98%)
 
-Train set: Average loss: 0.0020, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0751, Accuracy: 9785/10000 (98%)
-
-Train set: Average loss: 0.0019, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0020, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0757, Accuracy: 9789/10000 (98%)
+Test set: Average loss: 0.0747, Accuracy: 9802/10000 (98%)
 
-Train set: Average loss: 0.0019, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0755, Accuracy: 9784/10000 (98%)
-
-Train set: Average loss: 0.0018, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0019, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0757, Accuracy: 9787/10000 (98%)
+Test set: Average loss: 0.0755, Accuracy: 9802/10000 (98%)
 
-Train set: Average loss: 0.0017, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0755, Accuracy: 9790/10000 (98%)
-
-Train set: Average loss: 0.0017, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0019, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0765, Accuracy: 9783/10000 (98%)
+Test set: Average loss: 0.0753, Accuracy: 9800/10000 (98%)
 
-Train set: Average loss: 0.0016, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0766, Accuracy: 9781/10000 (98%)
-
-Train set: Average loss: 0.0015, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0018, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0770, Accuracy: 9784/10000 (98%)
+Test set: Average loss: 0.0757, Accuracy: 9803/10000 (98%)
 
-Train set: Average loss: 0.0015, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0761, Accuracy: 9783/10000 (98%)
-
-Train set: Average loss: 0.0014, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0017, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0771, Accuracy: 9784/10000 (98%)
+Test set: Average loss: 0.0757, Accuracy: 9800/10000 (98%)
 
-Train set: Average loss: 0.0014, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0773, Accuracy: 9785/10000 (98%)
-
-Train set: Average loss: 0.0014, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0017, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0779, Accuracy: 9784/10000 (98%)
+Test set: Average loss: 0.0760, Accuracy: 9798/10000 (98%)
 
-Train set: Average loss: 0.0013, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0779, Accuracy: 9783/10000 (98%)
-
-Train set: Average loss: 0.0013, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0016, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0781, Accuracy: 9786/10000 (98%)
+Test set: Average loss: 0.0769, Accuracy: 9801/10000 (98%)
 
-Train set: Average loss: 0.0012, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0778, Accuracy: 9781/10000 (98%)
-
-Train set: Average loss: 0.0012, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0016, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0779, Accuracy: 9785/10000 (98%)
+Test set: Average loss: 0.0769, Accuracy: 9798/10000 (98%)
 
-Train set: Average loss: 0.0012, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0788, Accuracy: 9785/10000 (98%)
-
-Train set: Average loss: 0.0011, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0015, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0790, Accuracy: 9786/10000 (98%)
+Test set: Average loss: 0.0772, Accuracy: 9805/10000 (98%)
 
-Train set: Average loss: 0.0011, Accuracy: 60000/60000 (100%)
+Train set: Average loss: 0.0015, Accuracy: 59999/60000 (100%)
 
 
-Test set: Average loss: 0.0791, Accuracy: 9785/10000 (98%)
+Test set: Average loss: 0.0771, Accuracy: 9801/10000 (98%)
+
+Train set: Average loss: 0.0014, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0776, Accuracy: 9796/10000 (98%)
+
+Train set: Average loss: 0.0014, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0773, Accuracy: 9804/10000 (98%)
+
+Train set: Average loss: 0.0013, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0773, Accuracy: 9803/10000 (98%)
+
+Train set: Average loss: 0.0013, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0782, Accuracy: 9800/10000 (98%)
+
+Train set: Average loss: 0.0012, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0781, Accuracy: 9802/10000 (98%)
+
+Train set: Average loss: 0.0012, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0780, Accuracy: 9802/10000 (98%)
+
+Train set: Average loss: 0.0012, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0782, Accuracy: 9799/10000 (98%)
+
+Train set: Average loss: 0.0011, Accuracy: 59999/60000 (100%)
+
+
+Test set: Average loss: 0.0787, Accuracy: 9802/10000 (98%)
 
 Train set: Average loss: 0.0011, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0790, Accuracy: 9783/10000 (98%)
+Test set: Average loss: 0.0786, Accuracy: 9805/10000 (98%)
 
 Train set: Average loss: 0.0011, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0790, Accuracy: 9788/10000 (98%)
+Test set: Average loss: 0.0792, Accuracy: 9802/10000 (98%)
+
+Train set: Average loss: 0.0011, Accuracy: 60000/60000 (100%)
+
+
+Test set: Average loss: 0.0789, Accuracy: 9802/10000 (98%)
 
 Train set: Average loss: 0.0010, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0791, Accuracy: 9784/10000 (98%)
+Test set: Average loss: 0.0792, Accuracy: 9799/10000 (98%)
 
 Train set: Average loss: 0.0010, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0792, Accuracy: 9783/10000 (98%)
+Test set: Average loss: 0.0796, Accuracy: 9802/10000 (98%)
 
 Train set: Average loss: 0.0010, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0801, Accuracy: 9781/10000 (98%)
+Test set: Average loss: 0.0795, Accuracy: 9804/10000 (98%)
 
 Train set: Average loss: 0.0010, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0801, Accuracy: 9785/10000 (98%)
+Test set: Average loss: 0.0798, Accuracy: 9804/10000 (98%)
 
 Train set: Average loss: 0.0009, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0797, Accuracy: 9787/10000 (98%)
+Test set: Average loss: 0.0796, Accuracy: 9806/10000 (98%)
 
 Train set: Average loss: 0.0009, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0802, Accuracy: 9786/10000 (98%)
+Test set: Average loss: 0.0799, Accuracy: 9803/10000 (98%)
 
 Train set: Average loss: 0.0009, Accuracy: 60000/60000 (100%)
 
 
-Test set: Average loss: 0.0803, Accuracy: 9781/10000 (98%)
+Test set: Average loss: 0.0800, Accuracy: 9804/10000 (98%)
 
-Train set: Average loss: 0.0009, Accuracy: 60000/60000 (100%)
-
-
-Test set: Average loss: 0.0809, Accuracy: 9784/10000 (98%)
-
-accuracy is 98.00
+accuracy is 98.06
 Training and evaluation finished
