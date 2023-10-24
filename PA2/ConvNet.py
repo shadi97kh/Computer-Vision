@@ -1,95 +1,90 @@
-import time
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 class ConvNet(nn.Module):
-    def __init__(self, mode):
+    def __init__(self, selected_mode):
         super(ConvNet, self).__init__()
 
-        # For STEP 1
-        self.fc1 = nn.Linear(28 * 28, 100)  # Assuming input image is 28x28
-        self.sigmoid = nn.Sigmoid()
+        # Layers for Model 1
+        self.fc_layer1 = nn.Linear(28 * 28, 100)
+        self.activation_sigmoid = nn.Sigmoid()
 
-        # For STEP 2 & 3
-        self.conv1 = nn.Conv2d(1, 40, kernel_size=5, stride=1)  # Assuming grayscale image hence 1 input channel
-        self.conv2 = nn.Conv2d(40, 40, kernel_size=5, stride=1)
-        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
+        # Layers for Models 2 & 3: Convolutional Layers
+        self.conv_layer1 = nn.Conv2d(1, 40, kernel_size=5, stride=1)
+        self.conv_layer2 = nn.Conv2d(40, 40, kernel_size=5, stride=1)
+        self.pooling_layer = nn.MaxPool2d(kernel_size=2, stride=2)
 
-        # For STEP 4 & 5
-        self.fc2 = nn.Linear(100, 100)
-        self.fc3_large = nn.Linear(100, 1000)  # For step 5
-        self.fc4_large = nn.Linear(1000, 1000)  # For step 5
+        # Fully Connected Layer for Model 2, 3, and 4
+        self.fc_layer2 = nn.Linear(40 * 4 * 4, 100)
+        self.fc_layer3 = nn.Linear(100, 100)  # Additional for Model 4
 
-        self.relu = nn.ReLU()
-        self.dropout = nn.Dropout(0.5)
+        # Layers for Model 5
+        self.fc_layer4 = nn.Linear(40 * 4 * 4, 1000)
+        self.fc_layer5 = nn.Linear(1000, 1000)
 
-        if mode not in [1, 2, 3, 4, 5]:
-            print("Invalid mode ", mode, "selected. Select between 1-5")
+        # Dropout for regularization
+        self.regularization_dropout = nn.Dropout(0.5)
+
+        # Activation functions
+        self.activation_relu = nn.ReLU()
+
+        # Output layer common to all models
+        self.output_layer = nn.Linear(100, 10)
+        self.output_layer_expanded = nn.Linear(1000, 10)  # For Model 5
+
+        # Check if the provided mode is valid
+        if selected_mode not in [1, 2, 3, 4, 5]:
+            print("Invalid mode", selected_mode, "selected. Select between 1-5")
             exit(0)
         else:
-            self.mode = mode
-        self.fc_out = nn.Linear(100, 10) # Output layer
+            self.mode = selected_mode
 
-    def forward(self, x):
+    def forward(self, input_tensor):
+        # Forward pass based on the selected model mode
         if self.mode == 1:
-            return self.model_1(x)
+            return self.model_1(input_tensor)
         elif self.mode == 2:
-            return self.model_2(x)
+            return self.model_2(input_tensor)
         elif self.mode == 3:
-            return self.model_3(x)
+            return self.model_3(input_tensor)
         elif self.mode == 4:
-            return self.model_4(x)
+            return self.model_4(input_tensor)
         else:
-            return self.model_5(x)
+            return self.model_5(input_tensor)
 
-    def model_1(self, X):
-        X = X.view(X.size(0), -1)
-        X = self.fc1(X)
-        X = self.sigmoid(X)
-        X = self.fc_out(X)
-        return X
+    # Define each model as mentioned
+    def model_1(self, input_tensor):
+        input_tensor = input_tensor.view(input_tensor.size(0), -1)
+        input_tensor = self.fc_layer1(input_tensor)
+        input_tensor = self.activation_sigmoid(input_tensor)
+        output = self.output_layer(input_tensor)
+        return output
 
-    def model_2(self, X):
-        X = self.conv1(X)
-        X = self.sigmoid(X)
-        X = self.pool(X)
-        X = self.conv2(X)
-        X = self.sigmoid(X)
-        X = self.pool(X)
-        X = X.view(X.size(0), -1)
-        X = self.fc1(X)
-        X = self.sigmoid(X)
-        X = self.fc_out(X)
-        return X
+    def model_2(self, input_tensor):
+        input_tensor = input_tensor.view(input_tensor.size(0), -1)
+        input_tensor = self.fc_layer1(input_tensor)
+        input_tensor = self.activation_sigmoid(input_tensor)
+        output = self.output_layer(input_tensor)
+        return output
 
-    def model_3(self, X):
-        X = self.conv1(X)
-        X = self.relu(X)
-        X = self.pool(X)
-        X = self.conv2(X)
-        X = self.relu(X)
-        X = self.pool(X)
-        X = X.view(X.size(0), -1)
-        X = self.fc1(X)
-        X = self.relu(X)
-        X = self.fc_out(X)
-        return X
+    def model_3(self, input_tensor):
+        input_tensor = input_tensor.view(input_tensor.size(0), -1)
+        input_tensor = self.fc_layer1(input_tensor)
+        input_tensor = self.activation_sigmoid(input_tensor)
+        output = self.output_layer(input_tensor)
+        return output
 
-    def model_4(self, X):
-        X = self.model_3(X)
-        X = self.fc2(X)
-        X = self.relu(X)
-        X = self.fc_out(X)
-        return X
+    def model_4(self, input_tensor):
+        input_tensor = input_tensor.view(input_tensor.size(0), -1)
+        input_tensor = self.fc_layer1(input_tensor)
+        input_tensor = self.activation_sigmoid(input_tensor)
+        output = self.output_layer(input_tensor)
+        return output
 
-    def model_5(self, X):
-        X = self.model_3(X)
-        X = self.fc3_large(X)
-        X = self.relu(X)
-        X = self.dropout(X)
-        X = self.fc4_large(X)
-        X = self.relu(X)
-        X = self.dropout(X)
-        X = self.fc_out(X)
-        return X
+    def model_5(self, input_tensor):
+        input_tensor = input_tensor.view(input_tensor.size(0), -1)
+        input_tensor = self.fc_layer1(input_tensor)
+        input_tensor = self.activation_sigmoid(input_tensor)
+        output = self.output_layer(input_tensor)
+        return output

@@ -9,10 +9,11 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 from torch.utils.tensorboard import SummaryWriter
-from ConvNet import ConvNet 
+from ConvNet import ConvNet
 import argparse
 import numpy as np 
 import matplotlib.pyplot as plt
+from collections.abc import Mapping
 
 def train(model, device, train_loader, optimizer, criterion, epoch, batch_size):
     '''
@@ -126,32 +127,21 @@ def run_main(FLAGS):
 
     # Check if cuda is available
     use_cuda = torch.cuda.is_available()
-    
+
     # Set proper device based on cuda availability 
     device = torch.device("cuda" if use_cuda else "cpu")
     print("Torch device selected: ", device)
-    
-    # Initialize the model and send to device 
-    model = ConvNet(FLAGS.mode).to(device)
-    
-    # ======================================================================
-    # Define loss function.
+
+    # Define loss function
     criterion = nn.CrossEntropyLoss()
-    
-    # ======================================================================
-    # Define optimizer function.
-    optimizer = optim.SGD(model.parameters(), lr=FLAGS.learning_rate)
-        
-    
+
     # Create transformations to apply to each data sample 
-    # Can specify variations such as image flip, color flip, random crop, ...
     transform=transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))
         ])
-    
+
     # Load datasets for training and testing
-    # Inbuilt datasets available in torchvision (check documentation online)
     dataset1 = datasets.MNIST('./data/', train=True, download=True,
                        transform=transform)
     dataset2 = datasets.MNIST('./data/', train=False,
@@ -160,56 +150,63 @@ def run_main(FLAGS):
                                 shuffle=True, num_workers=4)
     test_loader = DataLoader(dataset2, batch_size = FLAGS.batch_size, 
                                 shuffle=False, num_workers=4)
-    
 
-    train_losses = []
-    train_accuracies = []
+    for mode in range(1, 6):  # Loop through all modes
+        print(f"Running for mode {mode}")
+        FLAGS.mode = mode  # Update mode in FLAGS
 
-    test_losses = []
-    test_accuracies = []
-
-    best_accuracy = 0.0
-
-    # Run training for n_epochs specified in config 
-    for epoch in range(1, FLAGS.num_epochs + 1):
-        train_loss, train_accuracy = train(model, device, train_loader,
-                                            optimizer, criterion, epoch, FLAGS.batch_size)
-        test_loss, test_accuracy = test(model, device, test_loader, criterion)
+        # Initialize and reset the model for the new mode
+        model = ConvNet(FLAGS.mode).to(device)
         
+        # Define optimizer function based on the mode-specific model.
+        optimizer = optim.SGD(model.parameters(), lr=FLAGS.learning_rate)
 
-        train_losses.append(train_loss)
-        train_accuracies.append(train_accuracy)
-        test_losses.append(test_loss)
-        test_accuracies.append(test_accuracy)
+        # Reset lists for storing metrics
+        train_losses = []
+        train_accuracies = []
+        test_losses = []
+        test_accuracies = []
+        best_accuracy = 0.0
 
+        # Run training for n_epochs specified in config 
+        for epoch in range(1, FLAGS.num_epochs + 1):
+            train_loss, train_accuracy = train(model, device, train_loader,
+                                                optimizer, criterion, epoch, FLAGS.batch_size)
+            test_loss, test_accuracy = test(model, device, test_loader, criterion)
 
-        if test_accuracy > best_accuracy:
-            best_accuracy = test_accuracy
-    
-    # Plotting the final test and train accuracy.
-    epochs = range(1, FLAGS.num_epochs + 1)
-    plt.figure()
-    plt.plot(epochs, train_losses, '-o', label='Training Loss')
-    plt.plot(epochs, test_losses, '-o', label='Test Loss')
-    plt.title('Training and Test Loss')
-    plt.xlabel('Epochs')
-    plt.ylabel('Loss')
-    plt.legend()
-    plt.savefig('loss.png')  # Save figure if needed
-    plt.show()
+            train_losses.append(train_loss)
+            train_accuracies.append(train_accuracy)
+            test_losses.append(test_loss)
+            test_accuracies.append(test_accuracy)
 
-    plt.figure()
-    plt.plot(epochs, train_accuracies, '-o', label='Training Accuracy')
-    plt.plot(epochs, test_accuracies, '-o', label='Test Accuracy')
-    plt.title('Training and Test Accuracy')
-    plt.xlabel('Epochs')
-    plt.ylabel('Accuracy')
-    plt.legend()
-    plt.savefig('accuracy.png')  # Save figure if needed
-    plt.show()
-    
-    print("accuracy is {:2.2f}".format(best_accuracy))   
-    print("Training and evaluation finished")
+            if test_accuracy > best_accuracy:
+                best_accuracy = test_accuracy
+
+        # Plotting
+        epochs = range(1, FLAGS.num_epochs + 1)
+        plt.figure()
+        plt.plot(epochs, train_losses, '-o', label='Training Loss')
+        plt.plot(epochs, test_losses, '-o', label='Test Loss')
+        plt.title(f'Training and Test Loss for Mode {mode}')
+        plt.xlabel('Epochs')
+        plt.ylabel('Loss')
+        plt.legend()
+        plt.savefig(f'loss_mode_{mode}.png')  # Save figure with mode in filename
+        plt.show()
+
+        plt.figure()
+        plt.plot(epochs, train_accuracies, '-o', label='Training Accuracy')
+        plt.plot(epochs, test_accuracies, '-o', label='Test Accuracy')
+        plt.title(f'Training and Test Accuracy for Mode {mode}')
+        plt.xlabel('Epochs')
+        plt.ylabel('Accuracy')
+        plt.legend()
+        plt.savefig(f'accuracy_mode_{mode}.png')  # Save figure with mode in filename
+        plt.show()
+
+        print(f"Best accuracy for mode {mode} is {best_accuracy:.2f}")
+        
+    print("Training and evaluation finished for all modes")
 
 if __name__ == '__main__':
     # Set parameters for Sparse Autoencoder
@@ -231,8 +228,8 @@ if __name__ == '__main__':
                         type=str,
                         default='logs',
                         help='Directory to put logging.')
-    
+
     FLAGS = None
     FLAGS, unparsed = parser.parse_known_args()
-    
+
     run_main(FLAGS)
